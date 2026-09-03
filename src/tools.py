@@ -2,7 +2,7 @@
 
 from langchain.tools import tool
 
-from src import database
+from src import database, rag
 
 @tool
 def list_tables() -> str:
@@ -40,3 +40,17 @@ def run_sql(query: str) -> str:
       - Use tabelas e colunas descobertas com as ferramentas list_tables/schema_tables.
     """
     return database.run_select_query(database.db_connection(), query)
+
+
+@tool
+def query_policy(subject: str) -> str:
+    """Consulta o manual de políticas da loja e retorna os trechos relevantes ao tema.
+
+    Use para dúvidas sobre regras, horários, formas de pagamento, trocas e
+    devoluções, prazos de entrega/frete, garantia e políticas diversas.
+    """
+    index = rag.get_policy_index()
+    docs = rag.retrieve_policy(index, subject, k=4)
+    if not docs:
+        return "Nenhum trecho de política encontrado para o tema informado."
+    return "\n\n".join(f"[Trecho relevante]\n{doc.page_content}" for doc in docs)

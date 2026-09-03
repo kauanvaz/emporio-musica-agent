@@ -1,6 +1,9 @@
 import pytest
+from dotenv import load_dotenv
+
 from src import database
 
+load_dotenv()
 
 @pytest.fixture(scope="session")
 def conn():
