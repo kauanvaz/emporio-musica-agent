@@ -54,3 +54,6 @@ def query_policy(subject: str) -> str:
     if not docs:
         return "Nenhum trecho de política encontrado para o tema informado."
     return "\n\n".join(f"[Trecho relevante]\n{doc.page_content}" for doc in docs)
+
+
+TOOLS = [list_tables, schema_tables, run_sql, query_policy]
