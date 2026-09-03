@@ -47,7 +47,7 @@ def query_policy(subject: str) -> str:
     """Consulta o manual de políticas da loja e retorna os trechos relevantes ao tema.
 
     Use para dúvidas sobre regras, horários, formas de pagamento, trocas e
-    devoluções, prazos de entrega/frete, garantia e políticas diversas.
+    devoluções, prazos de entrega/frete, garantia, contato, telefone, endereço, e-mail e políticas diversas.
     """
     index = rag.get_policy_index()
     docs = rag.retrieve_policy(index, subject, k=4)
