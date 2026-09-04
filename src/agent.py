@@ -93,9 +93,11 @@ def get_agent():
     return _agent
 
 
-def interact_with_agent(user_text: str) -> str:
-    """Recebe uma mensagem e retorna a resposta do agente (invocação única)."""
+def interact_with_agent(user_text: str, history: list[dict] | None = None) -> str:
+    """Recebe uma mensagem (e histórico opcional) e retorna a resposta."""
     agent = get_agent()
-    result = agent.invoke({"messages": [{"role": "user", "content": user_text}]})
+    messages = (history or []) + [{"role": "user", "content": user_text}]
+    result = agent.invoke({"messages": messages})
     last = result["messages"][-1]
     return str(getattr(last, "content", "")).strip()
+
