@@ -1,9 +1,7 @@
 import streamlit as st
-from dotenv import load_dotenv
 
 from src.agent import interact_with_agent
 
-load_dotenv()
 
 st.set_page_config(page_title="Empório da Música", page_icon="🎸")
 
