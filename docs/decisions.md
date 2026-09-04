@@ -45,3 +45,14 @@ Assistente: Atualmente, temos as seguintes promoções ativas na loja:
 
 
 Problema: promoções para quais produtos? Não especificou
+
+# Interface web
+
+1. Python puro. Zero overhead de integração.
+2. Rápido de construir. Em poucas linhas é feita uma UI funcional com histórico de conversa e entrada. O foco fica no agente, não no frontend.
+3. O Streamlit tem widgets prontos de conversa, então o histórico multi-turno sai quase de graça.
+
+# Empacotamento
+
+- Ambiente reproduzível. Roda igual em qualquer lugar.
+- Setup simples: docker compose up sobe tudo, sem instalar nada na máquina host.
